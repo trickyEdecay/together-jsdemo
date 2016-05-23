@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>js-Demo</title>
+        <meta charset="utf-8">
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <article id="maincontainer">
+            <h1>Js-Demo</h1>
+            <hr>
+            <div class="div-quote">这里所有的demo都会基于<strong>jquery</strong>来讲,所以在你学习的时候你自己的案例里面必须要有引入<strong>jquery</strong></div>
+            
+            <br>
+            <br>
+            <section>
+                <h3>1.修改任何标签内容</h3>
+                <div class="div-demo-container">
+                    <div id="div-1">点击这里修改这行文本的内容</div>
+                    <p id="p-1">点击这里修改这行文本的内容</p>
+                    <a id="a-1">点击这里修改这行文本的内容</a>
+                    <div id="div-1-2">点击这里修改网页标题</div>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    //click()代表点击时发生
+                    
+                    $("#div-1").click(function(){
+                        $("#div-1").html("已经就改了这行文本的内容");
+                    });
+                    
+                    $("#p-1").click(function(){
+                        $("#p-1").html("已经就改了这行文本的内容");
+                    });
+                    
+                    $("#a-1").click(function(){
+                        $("#a-1").html("已经就改了这行文本的内容");
+                    });
+                    
+                    $("#div-1-2").click(function(){
+                        $("title").html("Js-Demo!!!!改改改");
+                    });
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>2.获取任何标签内容</h3>
+                <div class="div-demo-container">
+                    <div id="div-2-2">点击这里获取网页标题</div>
+                    <div id="div-2">点击这里获取这行文本的内容</div>
+                    <p id="p-2">点击这里获取这行文本的内容</p>
+                    <a id="a-2">点击这里获取这行文本的内容</a>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    //click()代表点击时发生
+                    
+                    $("#div-2").click(function(){
+                        alert($("#div-2").html());
+                    });
+                    
+                    $("#p-2").click(function(){
+                        alert($("#p-2").html());
+                    });
+                    
+                    $("#a-2").click(function(){
+                        alert($("#a-2").html());
+                    });
+                    
+                    $("#div-2-2").click(function(){
+                        alert($("title").html());
+                    });
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>3.获取更多内容</h3>
+                <div class="div-demo-container">
+                    <input id="input-3-1" class="input-text">&nbsp;&nbsp;<button id="button-3-1">点击获取左侧文本框内容</button>&nbsp;&nbsp;<button id="button-3-0">点击获取左侧文本框的class属性</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" id="checkbox-3-1"><span>选项1</span>
+                    <br>
+                    <input type="checkbox" id="checkbox-3-2"><span>选项2</span>
+                    <br>
+                    <br>
+                    
+                    <!--radio设置name属性一样就会自动变成一组单选按钮-->
+                    <input type="radio" id="radio-3-1" name="ra">单选1
+                    <input type="radio" id="radio-3-2" name="ra">单选2
+                    
+                    <br>
+                    <br>
+                    <br>
+                    <select id="select-3-1">
+                        <option>选择你的目的地</option>
+                        <option>梅州</option>
+                        <option>汕头</option>
+                        <option>汕尾</option>
+                        <option>揭阳</option>
+                        <option>揭西</option>
+                        <option>潮阳</option>
+                        <option>潮州</option>
+                        <option>深圳</option>
+                        <option>广州</option>
+                    </select>
+                    <br>
+                    <br>
+                    <button id="button-3-2">判断是否勾选了选项1</button>&nbsp;&nbsp;<button id="button-3-3">判断是否勾选了选项2</button>
+                    <br>
+                    <br>
+                    <button id="button-3-4">判断是否勾选了单选1</button>&nbsp;&nbsp;<button id="button-3-5">判断是否勾选了单选2</button>
+                    <br>
+                    <br>
+                    <button id="button-3-6">获取你选择的目的地</button>&nbsp;&nbsp;
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    //click()代表点击时发生
+                    
+                    $("#button-3-1").click(function(){
+                        //注意是val()而不是html()
+                        alert($("#input-3-1").val());
+                    });
+                    
+                    
+                    $("#button-3-0").click(function(){
+                        //attr()方法用来获取html任何标签中的任何属性
+                        alert($("#input-3-1").attr("class"));
+                    });
+                    
+                    
+                    //单选框和复选框的获取方式还有很多种形式,这里只举例一种
+                    //is方法用于判定html元素的状态,比如按钮被按下的时候,元素的状态为:active,当复选框单选框被选中时,元素的状态为:checked
+                    $("#button-3-2").click(function(){
+                        if($("#checkbox-3-1").is(":checked")){
+                            alert("勾选了选项1");
+                        }else{
+                            alert("没有勾选选项1");
+                        }
+                    });
+                    
+                    $("#button-3-3").click(function(){
+                        if($("#checkbox-3-2").is(":checked")){
+                            alert("勾选了选项2");
+                        }else{
+                            alert("没有勾选选项2");
+                        }
+                    });
+                    
+                    $("#button-3-4").click(function(){
+                        if($("#radio-3-1").is(":checked")){
+                            alert("勾选了单选1");
+                        }else{
+                            alert("没有勾选单选1");
+                        }
+                    });
+                    
+                    
+                    $("#button-3-5").click(function(){
+                        if($("#radio-3-2").is(":checked")){
+                            alert("勾选了单选2");
+                        }else{
+                            alert("没有勾选单选2");
+                        }
+                    });
+                    
+                    
+                    
+                    $("#button-3-6").click(function(){
+                        alert($("#select-3-1 option:selected").html());
+                    });
+                    
+                    
+                    
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>4.修改更多内容</h3>
+                <div class="div-demo-container">
+                    <input id="input-4-1" class="input-text">&nbsp;&nbsp;<button id="button-4-1">点击获取左侧文本框内容并用其修改下方的文本框</button>&nbsp;&nbsp;<button id="button-4-0">点击清空左侧文本框的class属性</button>
+                    <br>
+                    <input id="input-4-2" class="input-text">
+                    <br>
+                    <br>
+                    <input type="checkbox" id="checkbox-4-1"><span>选项1</span>
+                    <br>
+                    
+                    <!--radio设置name属性一样就会自动变成一组单选按钮-->
+                    <input type="radio" id="radio-4-1" name="ra">单选1
+                    <input type="radio" id="radio-4-2" name="ra">单选2
+                    
+                    <br>
+                    <br>
+                    <br>
+                    <select id="select-4-1">
+                        <option value="1">选择你的目的地</option>
+                        <option value="2">梅州</option>
+                        <option value="3">汕头</option>
+                        <option value="4">汕尾</option>
+                        <option value="5">揭阳</option>
+                        <option value="6">揭西</option>
+                        <option value="7">潮阳</option>
+                        <option value="8">潮州</option>
+                        <option value="9">深圳</option>
+                        <option value="10">广州</option>
+                    </select>
+                    <br>
+                    <br>
+                    <button id="button-4-2">设置勾选选项1</button>&nbsp;&nbsp;<button id="button-4-3">取消勾选选项1</button>
+                    <br>
+                    <br>
+                    <button id="button-4-4">设置勾选单选1</button>&nbsp;&nbsp;<button id="button-4-5">设置勾选单选2</button>
+                    <br>
+                    <br>
+                    <button id="button-4-6">设置目的地为"汕头"</button>&nbsp;&nbsp;
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    //click()代表点击时发生
+                    
+                    $("#button-4-1").click(function(){
+                        //注意是val()而不是html()
+                        var temp = $("#input-4-1").val();
+                        $("#input-4-2").val(temp);
+                    });
+                    
+                    
+                    $("#button-4-0").click(function(){
+                        //attr()方法用来获取html任何标签中的任何属性
+                        //""代表 没有字符串
+                        $("#input-4-1").attr("class","");
+                    });
+                    
+                    
+                    $("#button-4-2").click(function(){
+                        //在标签中 <input type="checkbox" checked="true"> 会让复选框变为勾选状态
+                        //attr方法和prop方法差不多..但是我用attr方法更改标签属性出了问题..所以改用prop方法..至于哪里用attr哪里用prop..反正哪个能用就用哪个
+                        $("#checkbox-4-1").prop("checked","true");
+                    });
+                    
+                    $("#button-4-3").click(function(){
+                        //在标签中 <input type="checkbox" checked="false"> 不会让复选框变为没有勾选状态
+                        //其实是一旦属性里面存在checked属性,他无论值是多少都会被勾选,正确的做法是删除checked属性
+                        $("#checkbox-4-1").removeAttr("checked");
+                    });
+                    
+                    $("#button-4-4").click(function(){
+                        $("#radio-4-1").prop("checked","true");
+                    });
+                    
+                    
+                    $("#button-4-5").click(function(){
+                        $("#radio-4-2").prop("checked","true");
+                    });
+                    
+                    
+                    
+                    $("#button-4-6").click(function(){
+                        //直接用选择器选中那个元素,然后用attr属性把他设置为选中.所以本例中select下面的所有option都加了value属性
+                        $("#select-4-1 option[value='3']").attr("selected", true);
+                    });
+                    
+                    
+                    
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>5.修改元素的css</h3>
+                <div class="div-demo-container">
+                    <div id="div-5">点击下面的任意按钮来让这个东西变动</div>
+                    <br>
+                    <button id="button-5-1">让上面的div变红</button>&nbsp;&nbsp;
+                    <button id="button-5-2">让上面的div变绿</button>&nbsp;&nbsp;
+                    <button id="button-5-3">让上面的div变蓝</button>
+                    <br>
+                    <br>
+                    <button id="button-5-4">让上面的div文字变白</button>&nbsp;&nbsp;
+                    <button id="button-5-5">让上面的div文字变黑</button>&nbsp;&nbsp;
+                    <br>
+                    <br>
+                    <button id="button-5-6">让上面的div文字隐藏</button>&nbsp;&nbsp;
+                    <button id="button-5-7">让上面的div文字显示</button>&nbsp;&nbsp;
+                    <br>
+                    <br>
+                    <button id="button-5-8">直接为上面的div添加一个class,这个class在css文件中有定义过样式</button>&nbsp;&nbsp;
+                    <button id="button-5-9">移除添加的class</button>&nbsp;&nbsp;
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    //click()代表点击时发生
+                    
+                    $("#button-5-1").click(function(){
+                        $("#div-5").css("background-color","#ff0000");
+                    });
+                    
+                    $("#button-5-2").click(function(){
+                        $("#div-5").css("background-color","#00ff00");
+                    });
+                    
+                    $("#button-5-3").click(function(){
+                        $("#div-5").css("background-color","#0000ff");
+                    });
+                    
+                    $("#button-5-4").click(function(){
+                        $("#div-5").css("color","#ffffff");
+                    });
+                    
+                    $("#button-5-5").click(function(){
+                        $("#div-5").css("color","#000000");
+                    });
+                    
+                    $("#button-5-6").click(function(){
+                        $("#div-5").css("display","none");
+                    });
+                    
+                    $("#button-5-7").click(function(){
+                        $("#div-5").css("display","block");
+                    });
+                    
+                    $("#button-5-8").click(function(){
+                        $("#div-5").addClass("example-5-css");
+                    });
+                    
+                    $("#button-5-9").click(function(){
+                        $("#div-5").removeClass("example-5-css");
+                    });
+                    
+                    
+                    
+                    
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </article>
+    </body>
+</html>
