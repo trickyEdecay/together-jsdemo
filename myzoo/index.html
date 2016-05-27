@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>myzoo</title>
+        <script src="../js/jquery-2.2.3.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="outputwindow"></div>
+        <br>
+        <button id="addnewroombtn">新建一个房间</button>
+        
+        <script>
+        $(document).ready(function(){
+            
+            var spaces = new space();
+            
+            $("#addnewroombtn").click(function(){
+                var rooms = new room(roomtype.small,"smallroom");
+                var mycat = new cat("yeye");
+                spaces.addRoom(rooms);
+                rooms.addPet(mycat);
+                mycat.feed(food.hamburger);
+            });
+        });
+        </script>
+    </body>
+</html>

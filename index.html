@@ -394,6 +394,216 @@
             
             
             
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>6.显示与隐藏的动画效果</h3>
+                <div class="div-demo-container">
+                    <div id="div-6-1" class="div-6">展开yeye的个人介绍(渐变出现)</div>
+                    <div id="div-6-2" class="div-6-2">这个人不得了</div>
+                    <br>
+                    <br>
+                    <div id="div-6-3" class="div-6">展开yeye的个人介绍(滑动出现)</div>
+                    <div id="div-6-4" class="div-6-2">这个人不得了</div>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    
+                    $("#div-6-1").click(function(){
+                        $("#div-6-2").fadeToggle();
+                    });
+                    
+                    $("#div-6-3").click(function(){
+                        $("#div-6-4").slideToggle();
+                    });
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>6.5显示与隐藏的动画效果完成后执行</h3>
+                <div class="div-demo-container">
+                    <div id="div-6-5-1" class="div-6">展开yeye的个人介绍</div>
+                    <div id="div-6-5-2" class="div-6-2">这个人不得了</div>
+                    <br>
+                    <br>
+                    <div id="div-6-5-3" class="div-6">展开yeye的个人介绍(优化后)</div>
+                    <div id="div-6-5-4" class="div-6-2">这个人不得了</div>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    
+                    $("#div-6-5-1").click(function(){
+                        //slideToggle()中的第一个参数是动画持续时间,1000=1秒
+                        $("#div-6-5-2").slideToggle(2000);
+                        alert("出现!");
+                    });
+                    
+                    //然而上面那个出现不会等到动画执行后才出现
+                    $("#div-6-5-3").click(function(){
+                        $("#div-6-5-4").slideToggle(2000,function(){
+                            alert("出现!");
+                        });
+                    });
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>7.添加子元素</h3>
+                <div class="div-demo-container">
+                    <input id="input-7" class="input-text">&nbsp;&nbsp;
+                    <button id="button-7">点这里在下面的div中添加一行你规定的文字</button>
+                    <div id="div-7"></div>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    $("#button-7").click(function(){
+                        //append()是在#div-7的子元素中的最后一个后面添加html内容,如果要在所有子元素的前面添加,需要用prepend()
+                        //类似的方法参考http://www.w3school.com.cn/jquery/jquery_dom_add.asp
+                        $("#div-7").append("<p>"+$("#input-7").val()+"</p>");
+                    });
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>8.加法运算</h3>
+                <div class="div-quote">知识点: 加法运算符与数据类型转换</div>
+                <div class="div-demo-container">
+                    <input id="input-8-1" class="input-text">&nbsp;&nbsp;+&nbsp;&nbsp;<input id="input-8-2" class="input-text">
+                    <button id="button-8">求和</button>
+                    <div id="div-8"></div>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    $("#button-8").click(function(){
+                        
+                        //从输入框获取的内容数据类型是属于 字符串的,要用于运算的话,需要将字符串转化为数字的数据类型,所以使用parseInt()方法可以转化为数字
+                        var a = parseInt($("#input-8-1").val());
+                        var b = parseInt($("#input-8-2").val());
+                        var sum = a+b;
+                        $("#div-8").html(sum);
+                        
+                        //可以简写成这样:
+                        //$("#div-8").html("结果是:"+(parseInt($("#input-8-1").val())+parseInt($("#input-8-2").val())));
+                    });
+                    
+                });
+                </script>
+            </section>
+            
+            
+            
+            
+            
+            
+            <br>
+            <br>
+            <section>
+                <h3>9.模拟通常的地址选择</h3>
+                <div class="div-quote">知识点: change事件,获取select元素内容,if语句,更改元素css</div>
+                <div class="div-demo-container">
+                    <select id="select-9-1">
+                        <option value="请选择省份">请选择省份</option>
+                        <option value="广东省">广东省</option>
+                    </select>
+                    <select id="select-9-2" style="display:none">
+                        <option value="请选择城市">请选择城市</option>
+                        <option value="梅州市">梅州市</option>
+                    </select>
+                    <select id="select-9-3" style="display:none">
+                        <option value="请选择区县">请选择区县</option>
+                        <option value="梅江区">梅江区</option>
+                        <option value="大埔">大埔</option>
+                        <option value="五华">五华</option>
+                        <option value="兴宁">兴宁</option>
+                    </select>
+                    <button id="button-9">输出地址</button>
+                    <div id="div-9"></div>
+                </div>
+                
+                <script>
+                $(document).ready(function(){
+                    
+                    $("#select-9-1").change(function(){
+                        if($("#select-9-1 option:selected").val()=="请选择省份"){
+                            $("#select-9-2").css("display","none");
+                            $("#select-9-3").css("display","none");
+                        }else{
+                            $("#select-9-2").css("display","inline-block");
+                        }
+                    });
+                    
+                    $("#select-9-2").change(function(){
+                        if($("#select-9-2 option:selected").val()=="请选择城市"){
+                            $("#select-9-3").css("display","none");
+                        }else{
+                            $("#select-9-3").css("display","inline-block");
+                        }
+                    });
+                    
+                    $("#button-9").click(function(){
+                        if($("#select-9-1 option:selected").val()=="请选择省份"){
+                            $("#div-9").html("你还没有选好省份");
+                        }else if($("#select-9-2 option:selected").val()=="请选择城市"){
+                            $("#div-9").html("你还没有选好城市");
+                        }else if($("#select-9-3 option:selected").val()=="请选择区县"){
+                            $("#div-9").html("你还没有选好区县");
+                        }else{
+                            var province = $("#select-9-1 option:selected").val();
+                            var city = $("#select-9-2 option:selected").val();
+                            var town = $("#select-9-3 option:selected").val();
+                            $("#div-9").html(province+city+town);
+                        }
+                        
+                        
+                    });
+                    
+                    
+                });
+                </script>
+            </section>
+            
+        
+            
+            
+            
+            
+            
+            
+            
         </article>
     </body>
 </html>
